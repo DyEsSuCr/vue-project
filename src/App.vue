@@ -1,3 +1,7 @@
+<script setup>
+import FormLogin from './components/auth/FormLogin.vue'
+</script>
+
 <template>
-  <h1 class="bg-green-500">VUE 3</h1>
+  <FormLogin />
 </template>

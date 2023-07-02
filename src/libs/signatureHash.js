@@ -1,7 +1,4 @@
-const privateKey = import.meta.env.VITE_API_SECRET
-const publicKey = import.meta.env.VITE_API_PUBLIC
-
-const signatureHash = async (timezone) => {
+const signatureHash = async (privateKey, publicKey, timezone) => {
   const message = `${privateKey},${publicKey},${timezone}`
   const msgBuffer = new TextEncoder().encode(message)
   const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer)
