@@ -4,7 +4,7 @@ import getTimezone from './timezone.js'
 
 const baseURL = import.meta.env.VITE_BASE_URL_API
 const PUBLIC_KEY = import.meta.env.VITE_API_PUBLIC
-const PRIVBATE_KEY = import.meta.env.VITE_API_SECRET
+const PRIVATE_KEY = import.meta.env.VITE_API_SECRET
 
 const api = axios.create({
   baseURL,
@@ -16,17 +16,17 @@ const api = axios.create({
 
 api.interceptors.request.use(async config => {
   const { data } = await getTimezone()
-  const hash = await signatureHash(PRIVBATE_KEY, PUBLIC_KEY, data.timezone)
+  const hash = await signatureHash(PRIVATE_KEY, PUBLIC_KEY, data.timezone)
 
   const token = JSON.parse(localStorage.getItem('token'))?.access_token
 
   config.headers.Authorization = token
 
   config.data = {
-    ...config.data,
-    apiKey: PRIVBATE_KEY,
+    apiKey: PUBLIC_KEY,
     utcTimeStamp: data.timezone,
-    signature: hash
+    signature: hash,
+    ...config.data
   }
 
   return config

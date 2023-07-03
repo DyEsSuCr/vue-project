@@ -1,10 +1,10 @@
 <script setup>
-import defaultLayaout from './layouts/defaultLayaout.vue'
+import DefaultLayaout from './layouts/defaultLayaout.vue'
 import FormLogin from './components/auth/FormLogin.vue'
 </script>
 
 <template>
-  <defaultLayaout>
+  <DefaultLayaout>
     <FormLogin />
-  </defaultLayaout>
+  </DefaultLayaout>
 </template>

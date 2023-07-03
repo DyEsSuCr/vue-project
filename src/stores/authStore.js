@@ -1,10 +1,13 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
+import { signin } from '../services/auth/signin.js'
 
 export const useAuthStore = defineStore('auth', () => {
-  const auth = ref(null)
+  const userAuth = ref(null)
+
+  const login = (data) => signin(data)
 
   const logout = () => localStorage.removeItem('token')
 
-  return { auth, logout }
+  return { userAuth, logout, login }
 })
