@@ -1,5 +1,5 @@
 <script setup>
-import FormLogin from '../components/auth/FormLogin.vue'
+import { FormLogin } from '../components/index.js'
 </script>
 
 <template>

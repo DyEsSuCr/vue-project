@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/authStore.js'
 import { Dashboard, Signin, Signup } from '../views/index.js'
+import { Categories, Menu } from '../components/index.js'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -32,28 +34,28 @@ const router = createRouter({
       meta: {
         requiredAuth: true
       },
-      // children: [
-      //   {
-      //     path: ``,
-      //     name: 'dashboard',
-      //     // component: Menu
-      //   },
-      //   {
-      //     path: `/categories`,
-      //     name: 'categories',
-      //     // component: Categories
-      //   },
-      //   {
-      //     path: `/categories/create`,
-      //     name: 'create',
-      //     // component: FormCategory
-      //   },
-      //   {
-      //     path: `/categories/:id`,
-      //     name: 'update',
-      //     // component: FormCategory
-      //   },
-      // ]
+      children: [
+        {
+          path: ``,
+          name: 'dashboard',
+          component: Menu
+        },
+        {
+          path: `categories`,
+          name: 'categories',
+          component: Categories
+        },
+        // {
+        //   path: `/categories/create`,
+        //   name: 'create',
+        //   // component: FormCategory
+        // },
+        // {
+        //   path: `/categories/:id`,
+        //   name: 'update',
+        //   // component: FormCategory
+        // },
+      ]
     },
   ]
 })
