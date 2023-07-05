@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useAuthStore } from '../../stores/authStore'
 
-const authStore = useAuthStore()
+const { register } = useAuthStore()
 
 const dataForm = ref({
   telephone: "90909090",
@@ -15,7 +15,7 @@ const dataForm = ref({
   email: "usernamerandom100@mail.com"
 })
 
-const data = () => authStore.register({ ...dataForm.value })
+const data = () => register({ ...dataForm.value })
 </script>
 
 <template>

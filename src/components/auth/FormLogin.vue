@@ -2,14 +2,14 @@
 import { ref } from 'vue'
 import { useAuthStore } from '../../stores/authStore'
 
-const authStore = useAuthStore()
+const { login } = useAuthStore()
 
 const dataForm = ref({
   email: 'usernamerandom100@mail.com',
   password: 'strongkey1235'
 })
 
-const data = () => authStore.login({ ...dataForm.value })
+const data = () => login({ ...dataForm.value })
 </script>
 
 <template>

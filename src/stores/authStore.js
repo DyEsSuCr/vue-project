@@ -4,12 +4,39 @@ import { signin } from '../services/auth/signin.js'
 import { signup } from '../services/auth/signup.js'
 
 export const useAuthStore = defineStore('auth', () => {
-  const userAuth = ref(null)
+  const token = ref(null)
+  const isAuthenticated = ref(false)
 
-  const login = (data) => signin(data)
+  const setToken = (value) => token.value = value
+  const setIsAuthenticated = (value) => {
+    isAuthenticated.value = value
+    console.log('usuario autenticado')
+  }
+
+  const login = async (data) => {
+    const { data: user } = await signin(data)
+    localStorage.setItem('token', user.access_token)
+    setToken(user.access_token)
+    setIsAuthenticated(true)
+  }
+
   const register = (data) => signup(data)
 
-  const logout = () => localStorage.removeItem('token')
+  const logout = () => {
+    localStorage.removeItem('token')
+    setToken(null)
+  }
 
-  return { userAuth, logout, login, register }
+  return {
+    // state
+    token,
+    isAuthenticated,
+
+    // actions
+    logout,
+    login,
+    register,
+    setToken,
+    setIsAuthenticated
+  }
 })
