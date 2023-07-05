@@ -1,7 +1,5 @@
 <script setup>
 import DefaultLayaout from './layouts/defaultLayaout.vue'
-import FormLogin from './components/auth/FormLogin.vue'
-import FormRegister from './components/auth/FormRegister.vue'
 
 import { onMounted } from 'vue'
 import { useAuthStore } from './stores/authStore.js'
@@ -20,7 +18,6 @@ onMounted(() => {
 
 <template>
   <DefaultLayaout>
-    <FormLogin />
-    <FormRegister />
+    <router-view />
   </DefaultLayaout>
 </template>
