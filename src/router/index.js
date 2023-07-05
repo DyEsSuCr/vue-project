@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { useAuthStore } from '../stores/authStore.js'
 import { Dashboard, Signin, Signup } from '../views/index.js'
 import { Categories, Menu } from '../components/index.js'
+import { watchTitle } from '../libs/watchTitle.js'
 
 
 const router = createRouter({
@@ -17,7 +18,8 @@ const router = createRouter({
       name: 'login',
       component: Signin,
       meta: {
-        requiredAuth: false
+        requiredAuth: false,
+        title: 'login'
       }
     },
     {
@@ -25,14 +27,16 @@ const router = createRouter({
       name: 'register',
       component: Signup,
       meta: {
-        requiredAuth: false
+        requiredAuth: false,
+        title: 'register'
       }
     },
     {
       path: `/dashboard`,
       component: Dashboard,
       meta: {
-        requiredAuth: true
+        requiredAuth: true,
+        title: 'dashboard'
       },
       children: [
         {
@@ -43,7 +47,8 @@ const router = createRouter({
         {
           path: `categories`,
           name: 'categories',
-          component: Categories
+          component: Categories,
+          meta: { title: 'categorias' }
         },
         // {
         //   path: `/categories/create`,
@@ -63,6 +68,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const { isAuthenticated } = useAuthStore()
   const needAuth = to.meta.requiredAuth
+  watchTitle(to.meta.title)
 
   if (!isAuthenticated && needAuth) next('login')
   else next()
