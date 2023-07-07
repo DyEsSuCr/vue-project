@@ -53,13 +53,15 @@ const router = createRouter({
         // {
         //   path: `/categories/create`,
         //   name: 'create',
-        //   // component: FormCategory
+        //   component: FormCategory,
+        //   meta: { title: 'create categoria' }
         // },
         // {
         //   path: `/categories/:id`,
         //   name: 'update',
-        //   // component: FormCategory
-        // },
+        //   component: FormCategory,
+        //   meta: { title: 'actualizar categoria' }
+        // }
       ]
     },
   ]

@@ -1,22 +1,20 @@
 <script setup>
-import { ref } from 'vue'
 import { useAuthStore } from '../../stores/authStore'
+import { useFormRegister } from '../../stores/formRegisterStore'
 
 const { login } = useAuthStore()
+const { dataForm } = useFormRegister()
 
-const dataForm = ref({
-  email: 'usernamerandom100@mail.com',
-  password: 'strongkey1235'
-})
-
-const data = () => login({ ...dataForm.value })
+const signin = () => login({ ...dataForm })
 </script>
 
 <template>
-  <form @submit.prevent="data">
+  <form @submit.prevent="signin">
     <h1>Inicia sesión</h1>
     <input class="text-black" type="email" placeholder="correo" v-model="dataForm.email">
     <input class="text-black" type="text" placeholder="contraseña" v-model="dataForm.password">
     <button>Ingresar</button>
+    <br>
+    <router-link :to="{ name: 'register' }">Registrate</router-link>
   </form>
 </template>
