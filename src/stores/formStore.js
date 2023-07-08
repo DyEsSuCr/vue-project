@@ -1,11 +1,8 @@
 import { defineStore } from 'pinia'
 import { ref } from 'vue'
 
-// usernamerandom100@mail.com
-// strongkey1235
-
-export const useFormRegister = defineStore('formRegister', () => {
-  const dataForm = ref({
+export const useForm = defineStore('formRegister', () => {
+  const dataFormRegister = ref({
     telephone: '',
     verify_tc: '',
     password: '',
@@ -19,8 +16,14 @@ export const useFormRegister = defineStore('formRegister', () => {
     razon_social: '',
   })
 
+  const dataFormLogin = ref({
+    password: '',
+    email: ''
+  })
+
   return {
     // state
-    dataForm,
+    dataFormRegister,
+    dataFormLogin,
   }
 })
