@@ -1,6 +1,6 @@
 import axios from 'axios'
 import signatureHash from '../libs/signatureHash.js'
-import getTimezone from './timezone.js'
+import getTimezone from '../services/timezone.js'
 
 const baseURL = import.meta.env.VITE_BASE_URL_API
 const PUBLIC_KEY = import.meta.env.VITE_API_PUBLIC
