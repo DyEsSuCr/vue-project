@@ -4,7 +4,6 @@ import { Dashboard, Signin, Signup } from '../views/index.js'
 import { Categories, Menu } from '../components/index.js'
 import { watchTitle } from '../libs/watchTitle.js'
 
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,7 +13,7 @@ const router = createRouter({
       redirect: to => { return { name: 'login' } }
     },
     {
-      path: `/login`,
+      path: '/login',
       name: 'login',
       component: Signin,
       meta: {
@@ -23,7 +22,7 @@ const router = createRouter({
       }
     },
     {
-      path: `/register`,
+      path: '/register',
       name: 'register',
       component: Signup,
       meta: {
@@ -32,7 +31,7 @@ const router = createRouter({
       }
     },
     {
-      path: `/dashboard`,
+      path: '/dashboard',
       component: Dashboard,
       meta: {
         requiredAuth: true,
@@ -40,16 +39,16 @@ const router = createRouter({
       },
       children: [
         {
-          path: ``,
+          path: '',
           name: 'dashboard',
           component: Menu
         },
         {
-          path: `categories`,
+          path: 'categories',
           name: 'categories',
           component: Categories,
           meta: { title: 'categorias' }
-        },
+        }
         // {
         //   path: `/categories/create`,
         //   name: 'create',
@@ -63,7 +62,7 @@ const router = createRouter({
         //   meta: { title: 'actualizar categoria' }
         // }
       ]
-    },
+    }
   ]
 })
 

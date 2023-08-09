@@ -11,10 +11,22 @@ const signup = () => register({ ...dataFormRegister })
 <template>
   <form @submit.prevent="signup">
     <h1>Registrate</h1>
-    <input class="text-black" type="email" placeholder="correo" v-model="dataFormRegister.email">
-    <input class="text-black" type="text" placeholder="contraseña" v-model="dataFormRegister.password">
+    <input
+      v-model="dataFormRegister.email"
+      class="text-black"
+      type="email"
+      placeholder="correo"
+    >
+    <input
+      v-model="dataFormRegister.password"
+      class="text-black"
+      type="text"
+      placeholder="contraseña"
+    >
     <button>Registrarse</button>
     <br>
-    <router-link :to="{ name: 'login' }">Ingresar</router-link>
+    <router-link :to="{ name: 'login' }">
+      Ingresar
+    </router-link>
   </form>
 </template>

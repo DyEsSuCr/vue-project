@@ -15,7 +15,7 @@ export const useAuthStore = defineStore('auth', () => {
 
   const login = async (data) => {
     const { data: user } = await signin(data)
-    localStorage.setItem('token', user.access_token)
+    window.localStorage.setItem('token', user.access_token)
     setToken(user.access_token)
     setIsAuthenticated(true)
   }
@@ -23,7 +23,7 @@ export const useAuthStore = defineStore('auth', () => {
   const register = (data) => signup(data)
 
   const logout = () => {
-    localStorage.removeItem('token')
+    window.localStorage.removeItem('token')
     setToken(null)
   }
 

@@ -11,10 +11,22 @@ const signin = () => login({ ...dataFormLogin })
 <template>
   <form @submit.prevent="signin">
     <h1>Inicia sesión</h1>
-    <input class="text-black" type="email" placeholder="correo" v-model="dataFormLogin.email">
-    <input class="text-black" type="text" placeholder="contraseña" v-model="dataFormLogin.password">
+    <input
+      v-model="dataFormLogin.email"
+      class="text-black"
+      type="email"
+      placeholder="correo"
+    >
+    <input
+      v-model="dataFormLogin.password"
+      class="text-black"
+      type="text"
+      placeholder="contraseña"
+    >
     <button>Ingresar</button>
     <br>
-    <router-link :to="{ name: 'register' }">Registrate</router-link>
+    <router-link :to="{ name: 'register' }">
+      Registrate
+    </router-link>
   </form>
 </template>

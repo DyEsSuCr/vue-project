@@ -13,7 +13,7 @@ export const useForm = defineStore('formRegister', () => {
     lastname: '',
     identy_document: '',
     NIT: '',
-    razon_social: '',
+    razon_social: ''
   })
 
   const dataFormLogin = ref({
@@ -24,6 +24,6 @@ export const useForm = defineStore('formRegister', () => {
   return {
     // state
     dataFormRegister,
-    dataFormLogin,
+    dataFormLogin
   }
 })
